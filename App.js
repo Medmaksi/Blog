@@ -20,11 +20,11 @@ const App = () => {
                 <Stack.Screen name="Index" component={IndexScreen} options={({navigation})=>({ title: 'Index Screen', headerRight: () => (
                         <TouchableOpacity onPress={()=>navigation.navigate('Create')}><Text style={styles.createIcon}>+</Text></TouchableOpacity>
                     ) })}/>
-                <Stack.Screen name="Show" component={ShowScreen} options={({navigation,route})=>({ title: 'Show Screen', headerRight: () => (
+                <Stack.Screen name="Show" component={ShowScreen} options={({navigation,route})=>({ title: `Post ${route.params.id}`, headerRight: () => (
                         <TouchableOpacity onPress={()=>navigation.navigate('Edit',{id: route.params.id})}><FontAwesome5 style={styles.createIcon} name={'edit'}></FontAwesome5></TouchableOpacity>
                     ) })}/>
                 <Stack.Screen name="Create" component={CreateScreen} options={{ title: 'Create Screen' }}/>
-                <Stack.Screen name="Edit" component={EditScreen} options={{ title: 'Edit Screen' }}/>
+                <Stack.Screen name="Edit" component={EditScreen} options={({route})=>({ title: `Post ${route.params.id}` })}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
